@@ -15,7 +15,7 @@ const projects = defineCollection({
     description: text,
     body: text,
     tags: z.array(z.string()),
-    image: z.string(),
+    image: z.string().optional(),
     year: z.string(),
     kind: z.enum(["company", "personal"]),
     company: text.optional(),

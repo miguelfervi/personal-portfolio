@@ -13,7 +13,6 @@ tags:
   - React
   - TypeScript
   - GraphQL
-image: /projects/landing.svg
 year: "2022"
 kind: company
 company:

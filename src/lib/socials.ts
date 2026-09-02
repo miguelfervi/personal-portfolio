@@ -7,7 +7,7 @@ export type SocialLink = {
   icon: "github" | "linkedin" | "twitter" | "mail";
 };
 
-export function socialLinks(): SocialLink[] {
+export function socialLinks(include?: SocialLink["icon"][]): SocialLink[] {
   const links: SocialLink[] = [
     {
       href: site.github,
@@ -42,9 +42,21 @@ export function socialLinks(): SocialLink[] {
     icon: "mail",
   });
 
-  return links;
+  if (!include) {
+    return links;
+  }
+
+  return links.filter((item) => include.includes(item.icon));
 }
 
 export function isExternalHref(href: string): boolean {
   return href.startsWith("http://") || href.startsWith("https://");
+}
+
+export function externalLinkAttrs(href: string): { target: "_blank"; rel: "noreferrer" } | Record<string, never> {
+  if (!isExternalHref(href)) {
+    return {};
+  }
+
+  return { target: "_blank", rel: "noreferrer" };
 }

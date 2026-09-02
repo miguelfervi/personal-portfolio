@@ -1,0 +1,59 @@
+---
+import { ui } from "../lib/i18n";
+import { externalLinkAttrs, socialLinks, type SocialLink } from "../lib/socials";
+import GitHub from "./icons/GitHub.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import Mail from "./icons/Mail.astro";
+
+interface Props {
+  variant?: "icons" | "labeled";
+  include?: SocialLink["icon"][];
+  class?: string;
+}
+
+const { variant = "icons", include, class: className } = Astro.props;
+const items = socialLinks(include);
+
+const hover: Record<SocialLink["icon"], string> = {
+  github: "hover:text-foreground",
+  linkedin: "hover:text-sky",
+  twitter: "hover:text-secondary",
+  mail: "hover:text-coral",
+};
+---
+
+<nav
+  aria-label={ui.social.en}
+  class:list={[variant === "icons" ? "flex items-center gap-1" : "flex flex-wrap items-center gap-2", className]}
+>
+  {
+    items.map((item) =>
+      variant === "icons" ? (
+        <a
+          href={item.href}
+          aria-label={item.label}
+          {...externalLinkAttrs(item.href)}
+          class:list={["icon-btn", hover[item.icon]]}
+        >
+          {item.icon === "github" && <GitHub />}
+          {item.icon === "linkedin" && <LinkedIn />}
+          {item.icon === "mail" && <Mail />}
+        </a>
+      ) : (
+        <a
+          href={item.href}
+          {...externalLinkAttrs(item.href)}
+          class:list={[
+            "inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-2 text-sm text-muted-foreground shadow-sm transition-colors",
+            hover[item.icon],
+          ]}
+        >
+          {item.icon === "github" && <GitHub />}
+          {item.icon === "linkedin" && <LinkedIn />}
+          {item.icon === "mail" && <Mail />}
+          {item.label}
+        </a>
+      ),
+    )
+  }
+</nav>

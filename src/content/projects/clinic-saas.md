@@ -13,7 +13,6 @@ tags:
   - NestJS
   - TypeScript
   - Monorepo
-image: /projects/toolkit.svg
 year: "2023"
 kind: company
 company:

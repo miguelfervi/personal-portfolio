@@ -28,6 +28,6 @@ See `experience/*.md`. Prefer bullets with outcome (conversion, CWV, delivery sp
 ## TODO for you
 
 - [ ] Public demo/repo URLs for any project that can be linked
-- [ ] Company logos or real screenshots in `public/projects/`
+- [x] Live screenshots in `public/projects/` (Docplanner public UI + personal apps)
 - [ ] Whether the phone number should appear on the public site
 - [ ] Exact current title at Docplanner if it differs from “Senior Product Engineer”

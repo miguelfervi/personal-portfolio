@@ -2,7 +2,7 @@
 import { ui } from "../lib/i18n";
 import { navItems } from "../lib/nav";
 import { site } from "../lib/site";
-import { isExternalHref, socialLinks } from "../lib/socials";
+import { externalLinkAttrs, socialLinks } from "../lib/socials";
 import { withBase } from "../lib/url";
 import T from "./T.astro";
 
@@ -46,8 +46,7 @@ const socials = socialLinks();
             <li>
               <a
                 href={item.href}
-                target={isExternalHref(item.href) ? "_blank" : undefined}
-                rel={isExternalHref(item.href) ? "noreferrer" : undefined}
+                {...externalLinkAttrs(item.href)}
                 class="text-muted-foreground transition-colors hover:text-secondary"
               >
                 {item.label}

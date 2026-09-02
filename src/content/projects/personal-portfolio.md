@@ -12,7 +12,7 @@ tags:
   - Astro
   - TypeScript
   - Tailwind CSS
-image: /projects/portfolio.svg
+image: /projects/portfolio.png
 year: "2026"
 kind: personal
 repo: https://github.com/miguelfervi/personal-portfolio

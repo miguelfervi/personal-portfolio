@@ -14,23 +14,27 @@ interface Props {
 
 const { project, variant = "listing" } = Astro.props;
 const href = withBase(`/projects/${project.slug}`);
-const image = withBase(project.image);
+const image = project.image ? withBase(project.image) : undefined;
 const tone = toneFor(project.slug);
 ---
 
 <article class="card group flex flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-  <a href={href} class="overflow-hidden">
-    <div class:list={["relative", `tone-${tone}`]}>
-      <img
-        src={image}
-        alt=""
-        loading="lazy"
-        width="1200"
-        height="800"
-        class="aspect-[3/2] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100"
-      />
-    </div>
-  </a>
+  {
+    image && (
+      <a href={href} class="overflow-hidden">
+        <div class:list={["relative", `tone-${tone}`]}>
+          <img
+            src={image}
+            alt=""
+            loading="lazy"
+            width="1200"
+            height="800"
+            class="aspect-[3/2] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100"
+          />
+        </div>
+      </a>
+    )
+  }
   <div class="flex flex-1 flex-col p-5 sm:p-6">
     <ProjectKind project={project} />
     <p class="mt-2 font-mono text-xs text-muted-foreground">{project.year}</p>

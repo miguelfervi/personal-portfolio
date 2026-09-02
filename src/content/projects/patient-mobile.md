@@ -12,7 +12,6 @@ tags:
   - React Native
   - TypeScript
   - Mobile
-image: /projects/blog.svg
 year: "2023"
 kind: company
 company:

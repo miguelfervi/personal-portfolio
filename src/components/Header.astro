@@ -4,18 +4,19 @@ import { navItems, isActivePath } from "../lib/nav";
 import { site } from "../lib/site";
 import { stripBase, withBase } from "../lib/url";
 import PrefControls from "./PrefControls.astro";
+import SocialLinks from "./SocialLinks.astro";
 import T from "./T.astro";
 
 const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/40 bg-background/70 backdrop-blur-xl dark:border-white/10">
-  <div class="page flex items-center justify-between gap-4 py-3.5">
+  <div class="page flex items-center gap-3 py-3.5 sm:gap-4">
     <a href={withBase("/")} class="min-w-0 truncate font-mono text-sm tracking-tight text-foreground">
       <span class="text-secondary">/</span> {site.handle}
     </a>
 
-    <nav class="hidden items-center gap-1 sm:flex" aria-label={ui.navAria.en}>
+    <nav class="ml-auto hidden items-center gap-1 sm:flex" aria-label={ui.navAria.en}>
       {
         navItems.map((item) => (
           <a
@@ -31,12 +32,10 @@ const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
           </a>
         ))
       }
-      <div class="ml-2">
-        <PrefControls />
-      </div>
     </nav>
 
-    <div class="flex items-center gap-2 sm:hidden">
+    <div class="flex items-center gap-1 max-sm:ml-auto">
+      <SocialLinks include={["github", "linkedin"]} />
       <PrefControls />
       <button
         type="button"
@@ -46,7 +45,7 @@ const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
         data-aria-es={ui.openMenu.es}
         aria-expanded="false"
         aria-controls="mobile-nav"
-        class="icon-btn"
+        class="icon-btn sm:hidden"
       >
         <svg data-menu-icon="open" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M4 6h16M4 12h16M4 18h16"></path>

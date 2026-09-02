@@ -31,10 +31,14 @@ const tone = toneFor(project.slug);
     <a href={withBase("/projects")} class="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-secondary">
       <T t={ui.backToProjects} />
     </a>
-    <div class:list={["mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]", `tone-${tone}`]}>
-      <img src={withBase(project.image)} alt="" width="1200" height="675" class="aspect-[16/9] w-full object-cover" />
-    </div>
-    <header class="mt-10">
+    {
+      project.image && (
+        <div class:list={["mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]", `tone-${tone}`]}>
+          <img src={withBase(project.image)} alt="" width="1200" height="675" class="aspect-[16/9] w-full object-cover" />
+        </div>
+      )
+    }
+    <header class={project.image ? "mt-10" : "mt-8"}>
       <ProjectKind project={project} />
       <p class="mt-3 font-mono text-xs text-muted-foreground">{project.year}</p>
       <h1 class="mt-3 font-serif text-[2.15rem] leading-[1.15] font-medium tracking-tight sm:text-5xl">
