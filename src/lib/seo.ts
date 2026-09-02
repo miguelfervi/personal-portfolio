@@ -16,7 +16,7 @@ export function personJsonLd(url: string | undefined) {
     name: site.name,
     jobTitle: site.role.en,
     email: site.email,
-    url: url || undefined,
+    url: url || site.url,
     sameAs: [site.github, site.linkedin].filter(Boolean),
     address: {
       "@type": "PostalAddress",

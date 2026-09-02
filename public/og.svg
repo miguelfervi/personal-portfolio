@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#f4f0fb"/>
+  <circle cx="80" cy="80" r="220" fill="#7c5cbf" opacity="0.35"/>
+  <circle cx="1120" cy="80" r="200" fill="#2f9e8c" opacity="0.32"/>
+  <circle cx="980" cy="560" r="180" fill="#e07a5f" opacity="0.28"/>
+  <text x="80" y="290" font-family="Georgia, serif" font-size="64" fill="#2a2140">Miguel Fernández Villegas</text>
+  <text x="80" y="360" font-family="ui-monospace, monospace" font-size="28" fill="#5b4b7a">Senior Product Engineer</text>
+  <text x="80" y="500" font-family="ui-monospace, monospace" font-size="22" fill="#2f9e8c">/ miguelfervi</text>
+</svg>

@@ -2,6 +2,7 @@
 import type { Project } from "../lib/content";
 import { ui } from "../lib/i18n";
 import { toneFor } from "../lib/tone";
+import { withBase } from "../lib/url";
 import ProjectKind from "./ProjectKind.astro";
 import T from "./T.astro";
 import TagList from "./TagList.astro";
@@ -12,7 +13,8 @@ interface Props {
 }
 
 const { project, variant = "listing" } = Astro.props;
-const href = `/projects/${project.slug}`;
+const href = withBase(`/projects/${project.slug}`);
+const image = withBase(project.image);
 const tone = toneFor(project.slug);
 ---
 
@@ -20,7 +22,7 @@ const tone = toneFor(project.slug);
   <a href={href} class="overflow-hidden">
     <div class:list={["relative", `tone-${tone}`]}>
       <img
-        src={project.image}
+        src={image}
         alt=""
         loading="lazy"
         width="1200"

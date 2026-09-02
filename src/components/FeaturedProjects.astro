@@ -1,6 +1,7 @@
 ---
 import { featuredProjects } from "../lib/content";
 import { ui } from "../lib/i18n";
+import { withBase } from "../lib/url";
 import ProjectCard from "./ProjectCard.astro";
 import T from "./T.astro";
 
@@ -12,7 +13,7 @@ const featured = await featuredProjects();
     <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">
       <T t={ui.featured} />
     </h2>
-    <a href="/projects" class="rounded-full bg-card px-3 py-1.5 font-mono text-xs text-secondary shadow-sm hover:bg-accent-soft">
+    <a href={withBase("/projects")} class="rounded-full bg-card px-3 py-1.5 font-mono text-xs text-secondary shadow-sm hover:bg-accent-soft">
       <T t={ui.viewAll} />
     </a>
   </div>

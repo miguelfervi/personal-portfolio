@@ -76,12 +76,16 @@ export const ui = {
   send: { en: "Send message", es: "Enviar mensaje" },
   sending: { en: "Sending…", es: "Enviando…" },
   formHint: {
-    en: "Demo form: it does not send real emails yet.",
-    es: "Formulario de demostración: aún no envía correos reales.",
+    en: "Messages go to my inbox. The first send asks Gmail to confirm the form.",
+    es: "Los mensajes llegan a mi correo. El primer envío pide a Gmail confirmar el formulario.",
   },
   formSuccess: {
     en: "Message sent. Thanks for writing — I will reply within 48 hours.",
     es: "Mensaje enviado. Gracias por escribir, responderé en menos de 48 horas.",
+  },
+  formError: {
+    en: "Could not send. Check the fields or email me directly.",
+    es: "No se pudo enviar. Revisa los campos o escríbeme por email.",
   },
   elsewhere: { en: "Elsewhere", es: "En otros sitios" },
   footerBlurb: {

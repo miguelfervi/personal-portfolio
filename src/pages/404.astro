@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import T from "../components/T.astro";
 import { ui } from "../lib/i18n";
+import { withBase } from "../lib/url";
 ---
 
 <Layout title="404" description={ui.notFoundBody}>
@@ -12,7 +13,7 @@ import { ui } from "../lib/i18n";
       <p class="mt-4 text-muted-foreground">
         <T t={ui.notFoundBody} />
       </p>
-      <a href="/" class="btn mt-8 bg-accent text-accent-foreground">
+      <a href={withBase("/")} class="btn mt-8 bg-accent text-accent-foreground">
         <T t={ui.goHome} />
       </a>
     </div>

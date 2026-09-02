@@ -1,6 +1,7 @@
 ---
 import { ui } from "../lib/i18n";
 import { site } from "../lib/site";
+import { withBase } from "../lib/url";
 import T from "./T.astro";
 ---
 
@@ -22,13 +23,13 @@ import T from "./T.astro";
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a
-          href="/projects"
+          href={withBase("/projects")}
           class="btn bg-accent text-accent-foreground"
         >
           <T t={ui.viewProjects} />
         </a>
         <a
-          href="/contact"
+          href={withBase("/contact")}
           class="btn border border-border bg-card hover:border-secondary/50"
         >
           <T t={ui.getInTouch} />
@@ -41,7 +42,7 @@ import T from "./T.astro";
         <div class="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-coral/50 blur-2xl"></div>
         <div class="absolute -right-4 -bottom-8 h-28 w-28 rounded-full bg-secondary/40 blur-2xl"></div>
         <img
-          src="/avatar.svg"
+          src={withBase("/avatar.svg")}
           alt=""
           width="256"
           height="256"

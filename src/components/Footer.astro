@@ -3,6 +3,7 @@ import { ui } from "../lib/i18n";
 import { navItems } from "../lib/nav";
 import { site } from "../lib/site";
 import { isExternalHref, socialLinks } from "../lib/socials";
+import { withBase } from "../lib/url";
 import T from "./T.astro";
 
 const year = new Date().getFullYear();
@@ -26,7 +27,7 @@ const socials = socialLinks();
         {
           navItems.map((item) => (
             <li>
-              <a href={item.href} class="text-muted-foreground transition-colors hover:text-accent">
+              <a href={withBase(item.href)} class="text-muted-foreground transition-colors hover:text-accent">
                 <T t={item.label} />
               </a>
             </li>

@@ -2,6 +2,7 @@
 import type { Text } from "../lib/i18n";
 import { descriptionOf, pageTitle, personJsonLd } from "../lib/seo";
 import { site } from "../lib/site";
+import { absoluteUrl } from "../lib/url";
 
 interface Props {
   title?: string;
@@ -11,16 +12,25 @@ interface Props {
 const { title, description } = Astro.props;
 const desc = descriptionOf(description, site.tagline);
 const documentTitle = pageTitle(title);
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
-const jsonLd = personJsonLd(Astro.site?.href);
+const origin = Astro.site ?? Astro.url;
+const canonical = new URL(Astro.url.pathname, origin).href;
+const ogImage = absoluteUrl("/og.svg", origin, import.meta.env.BASE_URL);
+const jsonLd = personJsonLd(Astro.site ? new URL(import.meta.env.BASE_URL, Astro.site).href : undefined);
 ---
 
 <title>{documentTitle}</title>
 <meta name="description" content={desc.en} data-meta-en={desc.en} data-meta-es={desc.es} />
 <link rel="canonical" href={canonical} />
+<meta property="og:site_name" content={site.name} />
 <meta property="og:title" content={documentTitle} />
 <meta property="og:description" content={desc.en} data-meta-en={desc.en} data-meta-es={desc.es} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonical} />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={documentTitle} />
+<meta name="twitter:description" content={desc.en} data-meta-en={desc.en} data-meta-es={desc.es} />
+<meta name="twitter:image" content={ogImage} />
 <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
