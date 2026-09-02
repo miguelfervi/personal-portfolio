@@ -19,7 +19,7 @@ year: "2026"
 kind: personal
 demo: https://miguelfervi.github.io/pace-calculator/
 repo: https://github.com/miguelfervi/pace-calculator
-featured: false
+featured: true
 order: 5
 body:
   en: |

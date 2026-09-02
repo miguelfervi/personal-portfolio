@@ -1,7 +1,7 @@
 ---
 import type { Project } from "../lib/content";
-import { ui } from "../lib/i18n";
-import { withBase } from "../lib/url";
+import { requestLocale, ui } from "../lib/i18n";
+import { pageHref, withBase } from "../lib/url";
 import ProjectKind from "./ProjectKind.astro";
 import T from "./T.astro";
 import TagList from "./TagList.astro";
@@ -12,7 +12,8 @@ interface Props {
 }
 
 const { project, variant = "listing" } = Astro.props;
-const href = withBase(`/projects/${project.slug}`);
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
+const href = pageHref(`/projects/${project.slug}`, locale, import.meta.env.BASE_URL);
 const image = project.image ? withBase(project.image) : undefined;
 ---
 
@@ -57,13 +58,6 @@ const image = project.image ? withBase(project.image) : undefined;
         project.demo && (
           <a href={project.demo} target="_blank" rel="noreferrer" class="text-muted-foreground hover:text-foreground">
             <T t={ui.demo} />
-          </a>
-        )
-      }
-      {
-        project.repo && (
-          <a href={project.repo} target="_blank" rel="noreferrer" class="text-muted-foreground hover:text-foreground">
-            <T t={ui.code} />
           </a>
         )
       }

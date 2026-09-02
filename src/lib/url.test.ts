@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { absoluteUrl, stripBase, withBase } from "./url";
+import {
+  absoluteUrl,
+  isLocaleSwitch,
+  localeNeutralPath,
+  localePath,
+  pageHref,
+  stripBase,
+  stripLocale,
+  withBase,
+} from "./url";
 
 describe("url", () => {
   it("prefixes internal paths with the configured base", () => {
@@ -26,5 +35,19 @@ describe("url", () => {
     expect(absoluteUrl("/og.svg", "https://miguelfervi.dev", "/personal-portfolio/")).toBe(
       "https://miguelfervi.dev/personal-portfolio/og.svg",
     );
+  });
+
+  it("prefixes Spanish routes and strips them for nav", () => {
+    expect(localePath("/", "es")).toBe("/es");
+    expect(localePath("/cv", "es")).toBe("/es/cv");
+    expect(localePath("/projects", "en")).toBe("/projects");
+    expect(stripLocale("/es/cv")).toBe("/cv");
+    expect(stripLocale("/es/")).toBe("/");
+    expect(pageHref("/projects", "es")).toBe("/es/projects");
+    expect(isLocaleSwitch("/", "/es")).toBe(true);
+    expect(isLocaleSwitch("/cv", "/es/cv")).toBe(true);
+    expect(isLocaleSwitch("/projects", "/cv")).toBe(false);
+    expect(localeNeutralPath("/es/cv")).toBe("/cv");
+    expect(localeNeutralPath("/personal-portfolio/es/projects", "/personal-portfolio/")).toBe("/projects");
   });
 });

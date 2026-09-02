@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { asText, isLocale, paragraphs, t } from "./i18n";
+import { asText, isLocale, paragraphs, requestLocale, t } from "./i18n";
 
 describe("i18n", () => {
   it("accepts only known locales", () => {
@@ -21,5 +21,12 @@ describe("i18n", () => {
 
   it("splits article bodies on blank lines", () => {
     expect(paragraphs("One.\n\nTwo.\n\n")).toEqual(["One.", "Two."]);
+  });
+
+  it("reads locale from the current locale or the /es path", () => {
+    expect(requestLocale("es", "/cv")).toBe("es");
+    expect(requestLocale("en", "/es/cv")).toBe("en");
+    expect(requestLocale(undefined, "/es/projects")).toBe("es");
+    expect(requestLocale(undefined, "/projects")).toBe("en");
   });
 });

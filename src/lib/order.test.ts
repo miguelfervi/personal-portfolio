@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { featuredOf, sortByOrder } from "./order";
+import { featuredWork, personalFirst, sortByOrder } from "./order";
 
 describe("content helpers", () => {
   it("sorts stable editorial order", () => {
@@ -11,14 +11,23 @@ describe("content helpers", () => {
     expect(sortByOrder(items).map((item) => item.name)).toEqual(["a", "b", "c"]);
   });
 
-  it("keeps featured work to a short home list", () => {
+  it("puts one company project first, then featured personal work", () => {
     const items = [
-      { featured: true, id: "1" },
-      { featured: false, id: "2" },
-      { featured: true, id: "3" },
-      { featured: true, id: "4" },
-      { featured: true, id: "5" },
+      { featured: true, kind: "company" as const, id: "market" },
+      { featured: true, kind: "company" as const, id: "clinic" },
+      { featured: false, kind: "personal" as const, id: "hidden" },
+      { featured: true, kind: "personal" as const, id: "finanzas" },
+      { featured: true, kind: "personal" as const, id: "pace" },
     ];
-    expect(featuredOf(items, 3).map((item) => item.id)).toEqual(["1", "3", "4"]);
+    expect(featuredWork(items).map((item) => item.id)).toEqual(["market", "finanzas", "pace"]);
+  });
+
+  it("lists personal work before company work", () => {
+    const items = [
+      { kind: "company" as const, id: "a" },
+      { kind: "personal" as const, id: "b" },
+      { kind: "company" as const, id: "c" },
+    ];
+    expect(personalFirst(items).map((item) => item.id)).toEqual(["b", "a", "c"]);
   });
 });

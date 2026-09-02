@@ -2,14 +2,20 @@ export type Locale = "en" | "es";
 
 export type Text = { en: string; es: string };
 
-export const locales = ["en", "es"] as const;
-
 export function isLocale(value: unknown): value is Locale {
   return value === "en" || value === "es";
 }
 
 export function t(text: Text, locale: Locale): string {
   return text[locale];
+}
+
+export function requestLocale(currentLocale: string | undefined, pathname: string): Locale {
+  if (isLocale(currentLocale)) {
+    return currentLocale;
+  }
+
+  return pathname === "/es" || pathname.startsWith("/es/") ? "es" : "en";
 }
 
 export function asText(value: string | Text): Text {
@@ -47,26 +53,21 @@ export const ui = {
   projectsKicker: { en: "Work", es: "Trabajo" },
   projectsTitle: { en: "Things I have shipped", es: "Cosas que he lanzado" },
   projectsIntro: {
-    en: "Company products first, then personal work. Each piece includes the stack and, when public, a demo or repo.",
-    es: "Primero producto de empresa, luego trabajo personal. Cada pieza incluye el stack y, si es público, demo o repo.",
+    en: "Personal work first, then company products. Each piece includes the stack and, when public, a demo.",
+    es: "Primero trabajo personal, luego producto de empresa. Cada pieza incluye el stack y, si es público, una demo.",
   },
   companyProject: { en: "Company", es: "Empresa" },
   personalProject: { en: "Personal", es: "Personal" },
   demo: { en: "Demo", es: "Demo" },
-  code: { en: "Code", es: "Código" },
   backToProjects: { en: "← Work", es: "← Trabajo" },
   resume: { en: "Resume", es: "Currículum" },
   experience: { en: "Experience", es: "Experiencia" },
   education: { en: "Education", es: "Educación" },
   technicalSkills: { en: "Technical skills", es: "Habilidades técnicas" },
   spokenLanguages: { en: "Languages", es: "Idiomas" },
-  footerBlurb: {
-    en: "Senior Product Engineer.",
-    es: "Senior Product Engineer.",
-  },
   footerCredit: {
-    en: "Set in type, not in a template.",
-    es: "Compuesto con tipo, no con una plantilla.",
+    en: "Built by hand, not from a template.",
+    es: "Hecho a mano, no con una plantilla.",
   },
   notFoundKicker: { en: "404", es: "404" },
   notFoundTitle: { en: "Page not found", es: "Página no encontrada" },

@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../lib/site";
+import FeaturedProjects from "./FeaturedProjects.astro";
+import Hero from "./Hero.astro";
+import SkillStack from "./SkillStack.astro";
+---
+
+<Layout description={site.tagline}>
+  <Hero />
+  <FeaturedProjects />
+  <SkillStack />
+</Layout>

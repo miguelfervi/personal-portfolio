@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import type { Project } from "../lib/content";
+import { requestLocale, ui } from "../lib/i18n";
+import { pageHref, withBase } from "../lib/url";
+import ProjectKind from "./ProjectKind.astro";
+import Prose from "./Prose.astro";
+import TagList from "./TagList.astro";
+import T from "./T.astro";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
+---
+
+<Layout title={project.title[locale]} description={project.excerpt}>
+  <article class="page-narrow py-16 sm:py-24">
+    <a
+      href={pageHref("/projects", locale, import.meta.env.BASE_URL)}
+      class="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-secondary"
+    >
+      <T t={ui.backToProjects} />
+    </a>
+    {
+      project.image && (
+        <div class="mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
+          <img
+            src={withBase(project.image)}
+            alt=""
+            width="1200"
+            height="675"
+            class="aspect-[16/9] w-full object-cover"
+          />
+        </div>
+      )
+    }
+    <header class={project.image ? "mt-10" : "mt-8"}>
+      <ProjectKind project={project} />
+      <p class="mt-3 font-mono text-xs text-muted-foreground">{project.year}</p>
+      <h1 class="mt-3 font-serif text-[2.15rem] leading-[1.15] font-medium tracking-tight sm:text-5xl">
+        <T t={project.title} />
+      </h1>
+    </header>
+    <div class="mt-10">
+      <Prose text={project.body} />
+    </div>
+    <div class="mt-12">
+      <TagList tags={project.tags} />
+    </div>
+    <div class="mt-8 flex flex-wrap gap-5 text-sm">
+      {
+        project.demo && (
+          <a href={project.demo} target="_blank" rel="noreferrer" class="text-accent hover:opacity-80">
+            <T t={ui.demo} />
+          </a>
+        )
+      }
+    </div>
+  </article>
+</Layout>

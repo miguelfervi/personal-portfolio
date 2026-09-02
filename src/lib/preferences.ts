@@ -1,39 +1,30 @@
-import { isLocale, ui, type Locale } from "./i18n";
+import { ui, type Locale } from "./i18n";
+import { applyDocumentTheme } from "./theme";
+import { isLocaleSwitch } from "./url";
 
-export function resolveLocale(stored: string | null, fallback: Locale): Locale {
-  return isLocale(stored) ? stored : fallback;
+function restoreTheme(root: HTMLElement = document.documentElement) {
+  applyDocumentTheme(
+    root.classList,
+    localStorage.getItem("theme"),
+    window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
 }
 
-export function isDarkTheme(stored: string | null, prefersDark: boolean): boolean {
-  if (stored === "dark") return true;
-  if (stored === "light") return false;
-  return prefersDark;
+function isSwapEvent(event: Event): event is Event & { newDocument: Document } {
+  return "newDocument" in event && event.newDocument instanceof Document;
+}
+
+function isLocaleNavEvent(event: Event): event is Event & { from: URL; to: URL } {
+  return (
+    "from" in event &&
+    "to" in event &&
+    event.from instanceof URL &&
+    event.to instanceof URL
+  );
 }
 
 function currentLang(): Locale {
   return document.documentElement.lang === "es" ? "es" : "en";
-}
-
-function applyPlaceholders(lang: Locale) {
-  document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-ph-en]").forEach((el) => {
-    const value = lang === "es" ? el.dataset.phEs : el.dataset.phEn;
-    if (value) el.placeholder = value;
-  });
-}
-
-function applyAria(lang: Locale) {
-  document.querySelectorAll<HTMLElement>("[data-aria-en]").forEach((el) => {
-    if (el.hasAttribute("data-theme-toggle")) return;
-    const value = lang === "es" ? el.dataset.ariaEs : el.dataset.ariaEn;
-    if (value) el.setAttribute("aria-label", value);
-  });
-}
-
-function applyMeta(lang: Locale) {
-  document.querySelectorAll<HTMLMetaElement>("[data-meta-en]").forEach((el) => {
-    const value = lang === "es" ? el.dataset.metaEs : el.dataset.metaEn;
-    if (value) el.setAttribute("content", value);
-  });
 }
 
 function syncThemeButtons() {
@@ -44,52 +35,77 @@ function syncThemeButtons() {
   });
 }
 
-function setLang(lang: Locale) {
-  document.documentElement.lang = lang;
-  localStorage.setItem("lang", lang);
-  applyPlaceholders(lang);
-  applyAria(lang);
-  applyMeta(lang);
-  syncThemeButtons();
-}
+function onDocumentClick(event: Event) {
+  const target = event.target;
+  if (!(target instanceof Element)) {
+    return;
+  }
 
-function initMenu() {
-  const toggle = document.getElementById("menu-toggle");
+  if (target.closest("[data-theme-toggle]")) {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    syncThemeButtons();
+    return;
+  }
+
+  const toggle = target.closest("#menu-toggle");
+  if (!(toggle instanceof HTMLElement)) {
+    return;
+  }
+
   const nav = document.getElementById("mobile-nav");
-  const openIcon = toggle?.querySelector('[data-menu-icon="open"]');
-  const closeIcon = toggle?.querySelector('[data-menu-icon="close"]');
-  if (!toggle || !nav) return;
+  const openIcon = toggle.querySelector('[data-menu-icon="open"]');
+  const closeIcon = toggle.querySelector('[data-menu-icon="close"]');
+  if (!nav) {
+    return;
+  }
 
-  toggle.addEventListener("click", () => {
-    const open = nav.hasAttribute("hidden");
-    const lang = currentLang();
-    nav.toggleAttribute("hidden", !open);
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? ui.closeMenu[lang] : ui.openMenu[lang]);
-    toggle.dataset.ariaEn = open ? ui.closeMenu.en : ui.openMenu.en;
-    toggle.dataset.ariaEs = open ? ui.closeMenu.es : ui.openMenu.es;
-    openIcon?.classList.toggle("hidden", open);
-    closeIcon?.classList.toggle("hidden", !open);
-  });
+  const open = nav.hasAttribute("hidden");
+  const lang = currentLang();
+  nav.toggleAttribute("hidden", !open);
+  toggle.setAttribute("aria-expanded", String(open));
+  toggle.setAttribute("aria-label", open ? ui.closeMenu[lang] : ui.openMenu[lang]);
+  openIcon?.classList.toggle("hidden", open);
+  closeIcon?.classList.toggle("hidden", !open);
 }
+
+let bound = false;
 
 export function initPreferences() {
-  setLang(resolveLocale(localStorage.getItem("lang"), currentLang()));
+  restoreTheme();
+  syncThemeButtons();
 
-  document.querySelectorAll<HTMLButtonElement>("[data-lang-toggle]").forEach((button) => {
-    button.addEventListener("click", () => {
-      setLang(currentLang() === "es" ? "en" : "es");
-    });
+  if (bound) {
+    return;
+  }
+
+  bound = true;
+  document.addEventListener("click", onDocumentClick);
+
+  document.addEventListener("astro:before-swap", (event) => {
+    if (isSwapEvent(event)) {
+      restoreTheme(event.newDocument.documentElement);
+    }
   });
 
-  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const next = !document.documentElement.classList.contains("dark");
-      document.documentElement.classList.toggle("dark", next);
-      localStorage.setItem("theme", next ? "dark" : "light");
-      syncThemeButtons();
-    });
+  document.addEventListener("astro:after-swap", () => {
+    restoreTheme();
+    syncThemeButtons();
   });
 
-  initMenu();
+  document.addEventListener("astro:page-load", () => {
+    syncThemeButtons();
+    const y = sessionStorage.getItem("locale-scroll");
+    if (y) {
+      window.scrollTo(0, Number(y));
+      sessionStorage.removeItem("locale-scroll");
+    }
+  });
+
+  document.addEventListener("astro:before-preparation", (event) => {
+    if (isLocaleNavEvent(event) && isLocaleSwitch(event.from.pathname, event.to.pathname)) {
+      sessionStorage.setItem("locale-scroll", String(window.scrollY));
+    }
+  });
 }

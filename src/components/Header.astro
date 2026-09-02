@@ -1,25 +1,26 @@
 ---
-import { ui } from "../lib/i18n";
+import { requestLocale, ui } from "../lib/i18n";
 import { navItems, isActivePath } from "../lib/nav";
 import { site } from "../lib/site";
-import { stripBase, withBase } from "../lib/url";
+import { localeNeutralPath, pageHref } from "../lib/url";
 import PrefControls from "./PrefControls.astro";
 import T from "./T.astro";
 
-const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
+const pathname = localeNeutralPath(Astro.url.pathname, import.meta.env.BASE_URL);
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/40 bg-background/70 backdrop-blur-xl dark:border-white/10">
   <div class="page flex items-center justify-between gap-4 py-3.5">
-    <a href={withBase("/")} class="min-w-0 truncate font-mono text-sm tracking-tight text-foreground">
+    <a href={pageHref("/", locale, import.meta.env.BASE_URL)} class="min-w-0 truncate font-mono text-sm tracking-tight text-foreground">
       <span class="text-secondary">/</span> {site.handle}
     </a>
 
-    <nav class="hidden items-center gap-1 sm:flex" aria-label={ui.navAria.en}>
+    <nav class="hidden items-center gap-1 sm:flex" aria-label={ui.navAria[locale]}>
       {
         navItems.map((item) => (
           <a
-            href={withBase(item.href)}
+            href={pageHref(item.href, locale, import.meta.env.BASE_URL)}
             class:list={[
               "relative px-3 py-1.5 text-sm transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-secondary after:transition-transform after:duration-300 hover:text-foreground",
               isActivePath(pathname, item.href)
@@ -41,9 +42,7 @@ const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
       <button
         type="button"
         id="menu-toggle"
-        aria-label={ui.openMenu.en}
-        data-aria-en={ui.openMenu.en}
-        data-aria-es={ui.openMenu.es}
+        aria-label={ui.openMenu[locale]}
         aria-expanded="false"
         aria-controls="mobile-nav"
         class="icon-btn"
@@ -58,11 +57,11 @@ const pathname = stripBase(Astro.url.pathname, import.meta.env.BASE_URL);
     </div>
   </div>
 
-  <nav id="mobile-nav" hidden class="page border-t border-border/50 bg-background py-3 sm:hidden" aria-label={ui.mobileAria.en}>
+  <nav id="mobile-nav" hidden class="page border-t border-border/50 bg-background py-3 sm:hidden" aria-label={ui.mobileAria[locale]}>
     {
       navItems.map((item) => (
         <a
-          href={withBase(item.href)}
+          href={pageHref(item.href, locale, import.meta.env.BASE_URL)}
           class:list={[
             "block min-h-11 py-2 text-sm",
             isActivePath(pathname, item.href) ? "text-foreground" : "text-muted-foreground",

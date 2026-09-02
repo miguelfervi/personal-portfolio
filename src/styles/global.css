@@ -107,22 +107,6 @@
     var(--color-background);
 }
 
-.tone-violet {
-  background: linear-gradient(145deg, oklch(0.62 0.2 300), oklch(0.42 0.16 300));
-}
-
-.tone-teal {
-  background: linear-gradient(145deg, oklch(0.68 0.14 175), oklch(0.42 0.1 175));
-}
-
-.tone-coral {
-  background: linear-gradient(145deg, oklch(0.72 0.16 30), oklch(0.5 0.12 20));
-}
-
-.tone-sky {
-  background: linear-gradient(145deg, oklch(0.7 0.12 230), oklch(0.45 0.12 260));
-}
-
 .prose {
   max-width: var(--max-width-measure);
   font-family: var(--font-serif);
@@ -132,18 +116,6 @@
 
 .prose p + p {
   margin-top: 1.15em;
-}
-
-.i18n-es {
-  display: none;
-}
-
-html[lang="es"] .i18n-en {
-  display: none;
-}
-
-html[lang="es"] .i18n-es {
-  display: contents;
 }
 
 ::selection {

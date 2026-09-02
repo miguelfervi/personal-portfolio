@@ -5,7 +5,7 @@ Merged from the two resumes. Public pages read the collection files, not this no
 ## Profile
 
 - Name: Miguel Fernández Villegas
-- Role: Senior Product Engineer (Front-End · AI)
+- Role: Senior Frontend Engineer & Product Engineer
 - Location: Granada, Spain
 - Email: miguelfervi@gmail.com
 - LinkedIn: https://www.linkedin.com/in/miguelfervi
@@ -14,7 +14,7 @@ Merged from the two resumes. Public pages read the collection files, not this no
 
 ## Summary
 
-Senior Product / Front-End & AI Engineer with 10 years shipping SaaS and marketplace products to production (Vue, React, React Native, Node). Focused on revenue-driving features, conversion-critical UI, and front-end architecture. Increasingly shipping AI-powered workflows: multi-agent systems, LLM integrations, RAG, MCP, and AI coding assistants.
+Senior Frontend Engineer and Product Engineer with 10 years shipping SaaS and marketplace products to production (Vue, React, React Native, Node). Focused on revenue-driving features, conversion-critical UI, and front-end architecture. Increasingly shipping AI-powered workflows: multi-agent systems, LLM integrations, RAG, MCP, and AI coding assistants.
 
 ## Experience
 
@@ -30,4 +30,4 @@ See `experience/*.md`. Prefer bullets with outcome (conversion, CWV, delivery sp
 - [ ] Public demo/repo URLs for any project that can be linked
 - [x] Live screenshots in `public/projects/` (Docplanner public UI + personal apps)
 - [ ] Whether the phone number should appear on the public site
-- [ ] Exact current title at Docplanner if it differs from “Senior Product Engineer”
+- [x] Public role: Senior Frontend Engineer & Product Engineer

@@ -1,0 +1,15 @@
+---
+import ProjectDetailPage from "../../../components/ProjectDetailPage.astro";
+import type { Project } from "../../../lib/content";
+import { projectStaticPaths } from "../../../lib/content";
+
+export const getStaticPaths = projectStaticPaths;
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<ProjectDetailPage project={project} />

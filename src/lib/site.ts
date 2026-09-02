@@ -3,7 +3,10 @@ import type { Text } from "./i18n";
 export const site = {
   name: "Miguel Fernández Villegas",
   handle: "miguelfervi",
-  role: { en: "Senior Product Engineer", es: "Senior Product Engineer" } satisfies Text,
+  role: {
+    en: "Senior Frontend Engineer & Product Engineer",
+    es: "Senior Frontend Engineer y Product Engineer",
+  } satisfies Text,
   location: { en: "Granada, Spain", es: "Granada, España" } satisfies Text,
   tagline: {
     en: "Ten years shipping SaaS and marketplace products. Front-end architecture, conversion-critical UI, and AI-assisted delivery.",
@@ -22,23 +25,23 @@ export const site = {
 export const skills: { group: Text; items: string[] }[] = [
   {
     group: { en: "Front-end", es: "Front-end" },
-    items: ["TypeScript", "Vue", "React", "React Native", "Nuxt", "Next.js"],
+    items: ["JavaScript", "TypeScript", "Vue", "React", "React Native", "Next.js", "Gatsby", "Astro"],
   },
   {
-    group: { en: "Full stack", es: "Full stack" },
-    items: ["Node.js", "NestJS", "GraphQL", "REST", "PHP", "Java"],
-  },
-  {
-    group: { en: "AI & agents", es: "IA y agentes" },
-    items: ["MCP", "RAG", "Prompt engineering", "Claude", "Codex", "Cursor"],
+    group: { en: "Backend", es: "Backend" },
+    items: ["Node.js", "NestJS", "GraphQL"],
   },
   {
     group: { en: "Delivery", es: "Entrega" },
-    items: ["Core Web Vitals", "Monorepos", "CI/CD", "Datadog", "Sentry", "Testing"],
+    items: ["Core Web Vitals", "Monorepos", "Testing"],
+  },
+  {
+    group: { en: "AI", es: "IA" },
+    items: ["MCP", "RAG"],
   },
 ];
 
 export const spokenLanguages = [
   { name: { en: "Spanish", es: "Español" }, level: { en: "Native", es: "Nativo" } },
-  { name: { en: "English", es: "Inglés" }, level: { en: "C1 · Professional", es: "C1 · Profesional" } },
+  { name: { en: "English", es: "Inglés" }, level: { en: "Professional", es: "Profesional" } },
 ];

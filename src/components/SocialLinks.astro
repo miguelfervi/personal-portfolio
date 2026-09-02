@@ -1,5 +1,5 @@
 ---
-import { ui } from "../lib/i18n";
+import { requestLocale, ui } from "../lib/i18n";
 import { externalLinkAttrs, socialLinks, type SocialLink } from "../lib/socials";
 import GitHub from "./icons/GitHub.astro";
 import LinkedIn from "./icons/LinkedIn.astro";
@@ -13,6 +13,7 @@ interface Props {
 
 const { variant = "icons", include, class: className } = Astro.props;
 const items = socialLinks(include);
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
 
 const hover: Record<SocialLink["icon"], string> = {
   github: "hover:text-foreground",
@@ -23,7 +24,7 @@ const hover: Record<SocialLink["icon"], string> = {
 ---
 
 <nav
-  aria-label={ui.social.en}
+  aria-label={ui.social[locale]}
   class:list={[variant === "icons" ? "flex items-center gap-1" : "flex flex-wrap items-center gap-2", className]}
 >
   {

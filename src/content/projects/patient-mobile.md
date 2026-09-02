@@ -18,7 +18,7 @@ kind: company
 company:
   en: Docplanner
   es: Docplanner
-featured: true
+featured: false
 order: 3
 body:
   en: |

@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import T from "../components/T.astro";
-import { ui } from "../lib/i18n";
-import { withBase } from "../lib/url";
+import { requestLocale, ui } from "../lib/i18n";
+import { pageHref } from "../lib/url";
+
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
 ---
 
-<Layout title="404" description={ui.notFoundBody}>
+<Layout title={ui.notFoundTitle[locale]} description={ui.notFoundBody}>
   <div class="flex min-h-[60vh] items-center justify-center px-5">
     <div class="card max-w-md p-10 text-center">
       <p class="font-mono text-sm text-coral"><T t={ui.notFoundKicker} /></p>
@@ -13,7 +15,7 @@ import { withBase } from "../lib/url";
       <p class="mt-4 text-muted-foreground">
         <T t={ui.notFoundBody} />
       </p>
-      <a href={withBase("/")} class="btn mt-8 bg-accent text-accent-foreground">
+      <a href={pageHref("/", locale, import.meta.env.BASE_URL)} class="btn mt-8 bg-accent text-accent-foreground">
         <T t={ui.goHome} />
       </a>
     </div>

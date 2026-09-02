@@ -1,12 +1,13 @@
 ---
-import type { Text } from "../lib/i18n";
+import { requestLocale, t, type Text } from "../lib/i18n";
 
 interface Props {
   t: Text;
   class?: string;
 }
 
-const { t, class: className } = Astro.props;
+const { t: text, class: className } = Astro.props;
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
 ---
 
-<span class:list={["i18n-en", className]}>{t.en}</span><span class:list={["i18n-es", className]}>{t.es}</span>
+<span class={className}>{t(text, locale)}</span>

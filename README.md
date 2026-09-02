@@ -1,6 +1,6 @@
 # Personal portfolio
 
-Miguel Fernández Villegas — Senior Product Engineer.
+Miguel Fernández Villegas — Senior Frontend Engineer & Product Engineer.
 
 Built with [Astro](https://astro.build), TypeScript, and Tailwind CSS. Copy lives in Markdown under `src/content/`.
 

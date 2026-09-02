@@ -4,8 +4,8 @@ company:
   en: Docplanner
   es: Docplanner
 role:
-  en: Senior Product Engineer
-  es: Senior Product Engineer
+  en: Senior Frontend Engineer & Product Engineer
+  es: Senior Frontend Engineer y Product Engineer
 period:
   en: Jan 2022 — Present
   es: Ene 2022 — Actualidad

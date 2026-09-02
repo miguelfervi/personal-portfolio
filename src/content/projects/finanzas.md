@@ -21,7 +21,7 @@ image: /projects/finanzas.png
 year: "2026"
 kind: personal
 demo: https://dashboard-alpha-nine-a6t942mcbg.vercel.app/login
-featured: false
+featured: true
 order: 4
 body:
   en: |

@@ -1,13 +1,14 @@
 ---
-import { ui } from "../lib/i18n";
+import { requestLocale, ui } from "../lib/i18n";
 import { navItems } from "../lib/nav";
 import { site } from "../lib/site";
 import { externalLinkAttrs, socialLinks } from "../lib/socials";
-import { withBase } from "../lib/url";
+import { pageHref } from "../lib/url";
 import T from "./T.astro";
 
 const year = new Date().getFullYear();
 const socials = socialLinks();
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
 ---
 
 <footer class="mt-10 border-t border-border/60 bg-card/50">
@@ -15,11 +16,11 @@ const socials = socialLinks();
     <div class="min-w-0">
       <p class="font-serif text-xl text-foreground">{site.name}</p>
       <p class="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
-        <T t={ui.footerBlurb} />
+        <T t={site.role} />.
       </p>
     </div>
 
-    <nav aria-label={ui.navigation.en}>
+    <nav aria-label={ui.navigation[locale]}>
       <p class="font-mono text-xs tracking-widest text-secondary uppercase">
         <T t={ui.navigation} />
       </p>
@@ -27,7 +28,7 @@ const socials = socialLinks();
         {
           navItems.map((item) => (
             <li>
-              <a href={withBase(item.href)} class="text-muted-foreground transition-colors hover:text-accent">
+              <a href={pageHref(item.href, locale, import.meta.env.BASE_URL)} class="text-muted-foreground transition-colors hover:text-accent">
                 <T t={item.label} />
               </a>
             </li>
@@ -36,7 +37,7 @@ const socials = socialLinks();
       </ul>
     </nav>
 
-    <nav aria-label={ui.social.en}>
+    <nav aria-label={ui.social[locale]}>
       <p class="font-mono text-xs tracking-widest text-coral uppercase">
         <T t={ui.social} />
       </p>

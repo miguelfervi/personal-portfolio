@@ -1,0 +1,20 @@
+---
+import { skills } from "../lib/site";
+import SkillChips from "./SkillChips.astro";
+import T from "./T.astro";
+
+const accents = ["text-secondary", "text-accent", "text-coral", "text-sky"] as const;
+---
+
+<div class="grid gap-4 sm:grid-cols-2">
+  {
+    skills.map((group, index) => (
+      <div class="card p-5">
+        <p class:list={["font-mono text-sm", accents[index % accents.length]]}>
+          <T t={group.group} />
+        </p>
+        <SkillChips items={group.items} />
+      </div>
+    ))
+  }
+</div>

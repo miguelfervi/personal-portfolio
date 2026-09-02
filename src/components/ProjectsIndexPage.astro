@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { listProjects } from "../lib/content";
+import { requestLocale, ui } from "../lib/i18n";
+import PageHeader from "./PageHeader.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = await listProjects();
+const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
+---
+
+<Layout title={ui.projectsTitle[locale]} description={ui.projectsIntro}>
+  <div class="page py-16 sm:py-24">
+    <PageHeader kicker={ui.projectsKicker} title={ui.projectsTitle} intro={ui.projectsIntro} />
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</Layout>
