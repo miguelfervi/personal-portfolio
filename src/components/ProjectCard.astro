@@ -1,7 +1,6 @@
 ---
 import type { Project } from "../lib/content";
 import { ui } from "../lib/i18n";
-import { toneFor } from "../lib/tone";
 import { withBase } from "../lib/url";
 import ProjectKind from "./ProjectKind.astro";
 import T from "./T.astro";
@@ -15,23 +14,20 @@ interface Props {
 const { project, variant = "listing" } = Astro.props;
 const href = withBase(`/projects/${project.slug}`);
 const image = project.image ? withBase(project.image) : undefined;
-const tone = toneFor(project.slug);
 ---
 
 <article class="card group flex flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-xl">
   {
     image && (
       <a href={href} class="overflow-hidden">
-        <div class:list={["relative", `tone-${tone}`]}>
-          <img
-            src={image}
-            alt=""
-            loading="lazy"
-            width="1200"
-            height="800"
-            class="aspect-[3/2] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100"
-          />
-        </div>
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          width="1200"
+          height="800"
+          class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+        />
       </a>
     )
   }

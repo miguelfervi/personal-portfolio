@@ -12,6 +12,7 @@ tags:
   - React Native
   - TypeScript
   - Mobile
+image: /projects/docplanner.svg
 year: "2023"
 kind: company
 company:

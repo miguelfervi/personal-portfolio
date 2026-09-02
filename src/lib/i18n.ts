@@ -61,8 +61,8 @@ export const ui = {
   technicalSkills: { en: "Technical skills", es: "Habilidades técnicas" },
   spokenLanguages: { en: "Languages", es: "Idiomas" },
   footerBlurb: {
-    en: "Senior Product Engineer in Granada.",
-    es: "Senior Product Engineer en Granada.",
+    en: "Senior Product Engineer.",
+    es: "Senior Product Engineer.",
   },
   footerCredit: {
     en: "Set in type, not in a template.",

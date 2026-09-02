@@ -13,6 +13,7 @@ tags:
   - React
   - TypeScript
   - GraphQL
+image: /projects/docplanner.svg
 year: "2022"
 kind: company
 company:

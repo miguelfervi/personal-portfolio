@@ -7,7 +7,6 @@ import T from "../../components/T.astro";
 import type { Project } from "../../lib/content";
 import { listProjects } from "../../lib/content";
 import { ui } from "../../lib/i18n";
-import { toneFor } from "../../lib/tone";
 import { withBase } from "../../lib/url";
 
 export async function getStaticPaths() {
@@ -23,7 +22,6 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const tone = toneFor(project.slug);
 ---
 
 <Layout title={project.title.en} description={project.excerpt}>
@@ -33,7 +31,7 @@ const tone = toneFor(project.slug);
     </a>
     {
       project.image && (
-        <div class:list={["mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]", `tone-${tone}`]}>
+        <div class="mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
           <img src={withBase(project.image)} alt="" width="1200" height="675" class="aspect-[16/9] w-full object-cover" />
         </div>
       )
