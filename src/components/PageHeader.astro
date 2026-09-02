@@ -1,0 +1,28 @@
+---
+import type { Text } from "../lib/i18n";
+import T from "./T.astro";
+
+interface Props {
+  kicker: Text;
+  title: Text | string;
+  intro?: Text;
+}
+
+const { kicker, title, intro } = Astro.props;
+---
+
+<header class="animate-rise">
+  <p class="inline-flex rounded-full bg-accent-soft px-3 py-1 font-mono text-xs tracking-[0.16em] text-accent uppercase">
+    <T t={kicker} />
+  </p>
+  <h1 class="mt-4 font-serif text-[2.15rem] leading-[1.15] font-medium tracking-tight text-balance sm:text-5xl">
+    {typeof title === "string" ? title : <T t={title} />}
+  </h1>
+  {
+    intro && (
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <T t={intro} />
+      </p>
+    )
+  }
+</header>

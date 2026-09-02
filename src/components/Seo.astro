@@ -1,0 +1,26 @@
+---
+import type { Text } from "../lib/i18n";
+import { descriptionOf, pageTitle, personJsonLd } from "../lib/seo";
+import { site } from "../lib/site";
+
+interface Props {
+  title?: string;
+  description?: string | Text;
+}
+
+const { title, description } = Astro.props;
+const desc = descriptionOf(description, site.tagline);
+const documentTitle = pageTitle(title);
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+const jsonLd = personJsonLd(Astro.site?.href);
+---
+
+<title>{documentTitle}</title>
+<meta name="description" content={desc.en} data-meta-en={desc.en} data-meta-es={desc.es} />
+<link rel="canonical" href={canonical} />
+<meta property="og:title" content={documentTitle} />
+<meta property="og:description" content={desc.en} data-meta-en={desc.en} data-meta-es={desc.es} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

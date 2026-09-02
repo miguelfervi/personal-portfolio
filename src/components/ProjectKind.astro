@@ -1,0 +1,16 @@
+---
+import type { Project } from "../lib/content";
+import { ui } from "../lib/i18n";
+import T from "./T.astro";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const label = project.kind === "company" ? (project.company ?? ui.companyProject) : ui.personalProject;
+---
+
+<p class="font-mono text-xs tracking-[0.14em] text-secondary uppercase">
+  <T t={label} />
+</p>

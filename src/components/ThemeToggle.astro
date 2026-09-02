@@ -1,0 +1,10 @@
+---
+import { ui } from "../lib/i18n";
+import Moon from "./icons/Moon.astro";
+import Sun from "./icons/Sun.astro";
+---
+
+<button type="button" data-theme-toggle aria-label={ui.darkMode.en} class="icon-btn hover:text-coral">
+  <span data-theme-icon="moon" class="inline-flex dark:hidden"><Moon /></span>
+  <span data-theme-icon="sun" class="hidden dark:inline-flex"><Sun /></span>
+</button>

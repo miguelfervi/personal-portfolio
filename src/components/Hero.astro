@@ -1,47 +1,53 @@
 ---
-import { featuredProject, site } from "../data/site";
+import { ui } from "../lib/i18n";
+import { site } from "../lib/site";
+import T from "./T.astro";
 ---
 
-<section class="mx-auto max-w-6xl px-4 pb-8 pt-10 sm:px-6 sm:pt-14">
-  <p class="max-w-2xl text-sm leading-relaxed text-white/55">{site.greeting}</p>
-
-  <div class="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-    <div>
-      <p class="text-sm font-medium uppercase tracking-[0.2em] text-secondary">Personal portfolio</p>
-      <h1 class="mt-4 font-serif text-4xl leading-tight text-white sm:text-6xl">
-        {site.headline}
+<section class="page pt-14 pb-10 sm:pt-20 sm:pb-14">
+  <div class="grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
+    <div class="animate-rise min-w-0">
+      <p class="inline-flex rounded-full bg-secondary/15 px-3 py-1 font-mono text-xs tracking-[0.16em] text-secondary uppercase">
+        <T t={site.role} />
+      </p>
+      <h1 class="mt-5 font-serif text-[2.5rem] leading-[1.08] font-medium tracking-tight text-balance sm:text-6xl">
+        {site.name}
       </h1>
-      <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/70">{site.tagline}</p>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <T t={site.tagline} />
+      </p>
+      <p class="mt-4 inline-flex items-center gap-2 rounded-full bg-card/80 px-3 py-1.5 text-sm text-muted-foreground shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-accent"></span>
+        <T t={site.location} />
+      </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a
-          href="#projects"
-          class="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(47,87,239,0.35)] transition hover:brightness-110"
+          href="/projects"
+          class="btn bg-accent text-accent-foreground"
         >
-          View projects
+          <T t={ui.viewProjects} />
         </a>
         <a
-          href="/about"
-          class="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/5"
+          href="/contact"
+          class="btn border border-border bg-card hover:border-secondary/50"
         >
-          About
+          <T t={ui.getInTouch} />
         </a>
       </div>
     </div>
 
-    <a
-      href={`/projects/${featuredProject.slug}`}
-      class="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl"
-      transition:name={`card-${featuredProject.slug}`}
-    >
-      <div class:list={["relative aspect-[16/10] p-6", `tone-${featuredProject.tone}`]}>
-        <span class="absolute left-5 top-5 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white/90">
-          Featured · {featuredProject.year}
-        </span>
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-6">
-          <h2 class="text-2xl font-semibold text-white">{featuredProject.title}</h2>
-          <p class="mt-2 line-clamp-2 text-sm text-white/80">{featuredProject.excerpt}</p>
-        </div>
+    <div class="animate-rise justify-self-start md:justify-self-end">
+      <div class="relative">
+        <div class="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-coral/50 blur-2xl"></div>
+        <div class="absolute -right-4 -bottom-8 h-28 w-28 rounded-full bg-secondary/40 blur-2xl"></div>
+        <img
+          src="/avatar.svg"
+          alt=""
+          width="256"
+          height="256"
+          class="relative h-48 w-48 rounded-[2rem] border-4 border-card object-cover shadow-[var(--shadow-card)] sm:h-64 sm:w-64"
+        />
       </div>
-    </a>
+    </div>
   </div>
 </section>

@@ -1,0 +1,39 @@
+---
+import type { Text } from "../lib/i18n";
+import T from "./T.astro";
+
+interface Props {
+  id: string;
+  label: Text;
+  placeholder: Text;
+  type?: "text" | "email";
+  rows?: number;
+  required?: boolean;
+  autocomplete?: string;
+}
+
+const { id, label, placeholder, type = "text", rows, required = true, autocomplete } = Astro.props;
+const shared = {
+  id,
+  name: id,
+  required,
+  autocomplete,
+  placeholder: placeholder.en,
+  "data-ph-en": placeholder.en,
+  "data-ph-es": placeholder.es,
+  class: rows ? "field resize-y" : "field",
+};
+---
+
+<div>
+  <label for={id} class="mb-2 block font-mono text-xs tracking-wide text-muted-foreground">
+    <T t={label} />
+  </label>
+  {
+    rows ? (
+      <textarea {...shared} rows={rows} />
+    ) : (
+      <input {...shared} type={type} />
+    )
+  }
+</div>

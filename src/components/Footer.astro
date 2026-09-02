@@ -1,20 +1,64 @@
 ---
-import { site } from "../data/site";
+import { ui } from "../lib/i18n";
+import { navItems } from "../lib/nav";
+import { site } from "../lib/site";
+import { isExternalHref, socialLinks } from "../lib/socials";
+import T from "./T.astro";
 
 const year = new Date().getFullYear();
+const socials = socialLinks();
 ---
 
-<footer class="border-t border-white/8">
-  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-    <div>
-      <p class="font-medium text-white/80">{site.brand}</p>
-      <p class="mt-1">{site.role} · {site.location}</p>
+<footer class="mt-10 border-t border-border/60 bg-card/50">
+  <div class="page grid gap-8 py-12 sm:grid-cols-[1.4fr_1fr_1fr]">
+    <div class="min-w-0">
+      <p class="font-serif text-xl text-foreground">{site.name}</p>
+      <p class="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+        <T t={ui.footerBlurb} />
+      </p>
     </div>
-    <nav class="flex flex-wrap gap-4" aria-label="Social">
-      <a class="hover:text-white" href={site.social.github}>GitHub</a>
-      <a class="hover:text-white" href={site.social.linkedin}>LinkedIn</a>
-      <a class="hover:text-white" href={`mailto:${site.email}`}>Email</a>
+
+    <nav aria-label={ui.navigation.en}>
+      <p class="font-mono text-xs tracking-widest text-secondary uppercase">
+        <T t={ui.navigation} />
+      </p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href} class="text-muted-foreground transition-colors hover:text-accent">
+                <T t={item.label} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
-    <p>© {year} {site.name}</p>
+
+    <nav aria-label={ui.social.en}>
+      <p class="font-mono text-xs tracking-widest text-coral uppercase">
+        <T t={ui.social} />
+      </p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          socials.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target={isExternalHref(item.href) ? "_blank" : undefined}
+                rel={isExternalHref(item.href) ? "noreferrer" : undefined}
+                class="text-muted-foreground transition-colors hover:text-secondary"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
+
+  <p class="page pb-8 text-xs text-muted-foreground">
+    © {year} {site.name}. <T t={ui.footerCredit} />
+  </p>
 </footer>

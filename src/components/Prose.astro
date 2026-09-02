@@ -1,0 +1,20 @@
+---
+import { paragraphs, type Text } from "../lib/i18n";
+
+interface Props {
+  text: Text;
+}
+
+const { text } = Astro.props;
+const en = paragraphs(text.en);
+const es = paragraphs(text.es);
+---
+
+<div class="prose">
+  <div class="i18n-en">
+    {en.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+  <div class="i18n-es">
+    {es.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</div>

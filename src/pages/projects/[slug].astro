@@ -1,43 +1,66 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getProject, projects, site } from "../../data/site";
+import ProjectKind from "../../components/ProjectKind.astro";
+import Prose from "../../components/Prose.astro";
+import TagList from "../../components/TagList.astro";
+import T from "../../components/T.astro";
+import type { Project } from "../../lib/content";
+import { listProjects } from "../../lib/content";
+import { ui } from "../../lib/i18n";
+import { toneFor } from "../../lib/tone";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const projects = await listProjects();
   return projects.map((project) => ({
     params: { slug: project.slug },
+    props: { project },
   }));
 }
 
-const { slug } = Astro.params;
-const project = getProject(slug ?? "");
-
-if (!project) {
-  throw new Error(`Project not found: ${slug}`);
+interface Props {
+  project: Project;
 }
+
+const { project } = Astro.props;
+const tone = toneFor(project.slug);
 ---
 
-<Layout title={project.title} description={project.excerpt}>
-  <article class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-    <a href="/#projects" class="text-sm text-white/55 hover:text-white">← Projects</a>
-    <div
-      class:list={["mt-6 overflow-hidden rounded-3xl border border-white/10", `tone-${project.tone}`]}
-      transition:name={`card-${project.slug}`}
-    >
-      <div class="aspect-[16/8] p-6">
-        <span class="rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white/90">
-          {project.year}
-        </span>
-      </div>
+<Layout title={project.title.en} description={project.excerpt}>
+  <article class="page-narrow py-16 sm:py-24">
+    <a href="/projects" class="inline-flex min-h-11 items-center text-sm text-muted-foreground hover:text-secondary">
+      <T t={ui.backToProjects} />
+    </a>
+    <div class:list={["mt-8 overflow-hidden rounded-3xl shadow-[var(--shadow-card)]", `tone-${tone}`]}>
+      <img src={project.image} alt="" width="1200" height="675" class="aspect-[16/9] w-full object-cover" />
     </div>
-    <p class="mt-8 text-sm uppercase tracking-[0.2em] text-secondary">{site.brand}</p>
-    <h1 class="mt-3 font-serif text-4xl text-white sm:text-5xl">{project.title}</h1>
-    <p class="mt-5 text-lg leading-relaxed text-white/70">{project.description}</p>
-    <ul class="mt-8 flex flex-wrap gap-2">
+    <header class="mt-10">
+      <ProjectKind project={project} />
+      <p class="mt-3 font-mono text-xs text-muted-foreground">{project.year}</p>
+      <h1 class="mt-3 font-serif text-[2.15rem] leading-[1.15] font-medium tracking-tight sm:text-5xl">
+        <T t={project.title} />
+      </h1>
+    </header>
+    <div class="mt-10">
+      <Prose text={project.body} />
+    </div>
+    <div class="mt-12">
+      <TagList tags={project.tags} />
+    </div>
+    <div class="mt-8 flex flex-wrap gap-5 text-sm">
       {
-        project.tags.map((tag) => (
-          <li class="rounded-full bg-white/8 px-3 py-1.5 text-sm text-white/70">{tag}</li>
-        ))
+        project.demo && (
+          <a href={project.demo} target="_blank" rel="noreferrer" class="text-accent hover:opacity-80">
+            <T t={ui.demo} />
+          </a>
+        )
       }
-    </ul>
+      {
+        project.repo && (
+          <a href={project.repo} target="_blank" rel="noreferrer" class="text-muted-foreground hover:text-foreground">
+            <T t={ui.code} />
+          </a>
+        )
+      }
+    </div>
   </article>
 </Layout>

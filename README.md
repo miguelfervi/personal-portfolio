@@ -1,15 +1,15 @@
 # Personal portfolio
 
-Astro site inspired by the visual language of [fernando-herrera.com](https://fernando-herrera.com/): dark background, violet/blue accents, project cards, and an about section.
+Miguel Fernández Villegas — Senior Product Engineer.
 
-Editable content lives in `src/data/site.ts`.
+Built with [Astro](https://astro.build), TypeScript, and Tailwind CSS. Copy lives in Markdown under `src/content/`.
 
 ## Commands
 
 ```sh
 npm install
 npm run dev
-npm run build
+npm run verify
 ```
 
-The local server runs at `http://localhost:4321`.
+Local server: `http://localhost:4321`.

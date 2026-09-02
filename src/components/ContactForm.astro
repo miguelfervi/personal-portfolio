@@ -1,0 +1,42 @@
+---
+import { ui } from "../lib/i18n";
+import Field from "./Field.astro";
+import T from "./T.astro";
+---
+
+<form id="contact-form" class="grid gap-5">
+  <Field id="name" label={ui.name} placeholder={ui.namePlaceholder} autocomplete="name" />
+  <Field id="email" label={ui.email} placeholder={ui.emailPlaceholder} type="email" autocomplete="email" />
+  <Field id="message" label={ui.message} placeholder={ui.messagePlaceholder} rows={6} />
+  <button type="submit" class="btn self-start bg-secondary text-secondary-foreground">
+    <span data-submit-label><T t={ui.send} /></span>
+  </button>
+  <p id="form-status" class="text-sm text-muted-foreground" role="status">
+    <T t={ui.formHint} />
+  </p>
+</form>
+
+<script>
+  import { ui } from "../lib/i18n";
+
+  const form = document.getElementById("contact-form");
+  if (form instanceof HTMLFormElement) {
+    const status = document.getElementById("form-status");
+    const label = form.querySelector("[data-submit-label]");
+    const button = form.querySelector("button[type='submit']");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!(button instanceof HTMLButtonElement) || !label || !status) return;
+      const lang = document.documentElement.lang === "es" ? "es" : "en";
+      button.disabled = true;
+      label.textContent = ui.sending[lang];
+      window.setTimeout(() => {
+        form.reset();
+        button.disabled = false;
+        label.textContent = ui.send[lang];
+        status.textContent = ui.formSuccess[lang];
+      }, 700);
+    });
+  }
+</script>

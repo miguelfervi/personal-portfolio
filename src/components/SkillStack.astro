@@ -1,0 +1,26 @@
+---
+import { ui } from "../lib/i18n";
+import { skills } from "../lib/site";
+import SkillChips from "./SkillChips.astro";
+import T from "./T.astro";
+
+const accents = ["text-secondary", "text-accent", "text-coral", "text-sky"] as const;
+---
+
+<section class="page py-10">
+  <h2 class="font-serif text-3xl font-medium tracking-tight">
+    <T t={ui.stack} />
+  </h2>
+  <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    {
+      skills.map((group, index) => (
+        <div class="card p-5">
+          <p class:list={["font-mono text-sm", accents[index % accents.length]]}>
+            <T t={group.group} />
+          </p>
+          <SkillChips items={group.items} />
+        </div>
+      ))
+    }
+  </div>
+</section>

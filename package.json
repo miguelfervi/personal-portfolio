@@ -9,7 +9,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "astro check",
+    "verify": "vitest run && astro check && astro build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -18,5 +22,10 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.11"
   }
 }
