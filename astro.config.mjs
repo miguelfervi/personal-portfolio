@@ -18,6 +18,5 @@ export default defineConfig({
     "/about": "/cv",
     "/sobre-mi": "/cv",
     "/proyectos": "/projects",
-    "/contacto": "/contact",
   },
 });

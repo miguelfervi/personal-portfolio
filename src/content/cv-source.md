@@ -10,7 +10,7 @@ Merged from the two resumes. Public pages read the collection files, not this no
 - Email: miguelfervi@gmail.com
 - LinkedIn: https://www.linkedin.com/in/miguelfervi
 - GitHub: https://github.com/miguelfervi
-- Phone: omitted from the public site (spam). Add it on `/contact` if you want it public.
+- Phone: omitted from the public site (spam).
 
 ## Summary
 
@@ -29,5 +29,5 @@ See `experience/*.md`. Prefer bullets with outcome (conversion, CWV, delivery sp
 
 - [ ] Public demo/repo URLs for any project that can be linked
 - [ ] Company logos or real screenshots in `public/projects/`
-- [ ] Whether the phone number should appear on `/contact`
+- [ ] Whether the phone number should appear on the public site
 - [ ] Exact current title at Docplanner if it differs from “Senior Product Engineer”

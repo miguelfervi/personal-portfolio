@@ -164,10 +164,6 @@ html[lang="es"] .i18n-es {
     @apply rounded-3xl border border-border/70 bg-card shadow-[var(--shadow-card)];
   }
 
-  .field {
-    @apply w-full rounded-2xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent;
-  }
-
   .icon-btn {
     @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-card text-muted-foreground shadow-sm transition-colors hover:text-secondary sm:h-9 sm:w-9;
   }

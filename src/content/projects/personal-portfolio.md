@@ -17,7 +17,7 @@ year: "2026"
 kind: personal
 repo: https://github.com/miguelfervi/personal-portfolio
 featured: false
-order: 4
+order: 6
 body:
   en: |
     A small static site on purpose. Pages are Astro. Copy is Markdown with a Zod schema. UI chrome is TypeScript modules with unit tests.

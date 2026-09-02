@@ -9,7 +9,6 @@ export const navItems: NavItem[] = [
   { href: "/", label: ui.home },
   { href: "/projects", label: ui.projects },
   { href: "/cv", label: ui.cv },
-  { href: "/contact", label: ui.contact },
 ];
 
 export function isActivePath(pathname: string, href: string): boolean {
