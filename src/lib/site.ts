@@ -12,7 +12,7 @@ export const site = {
   email: "miguelfervi@gmail.com",
   github: "https://github.com/miguelfervi",
   githubHandle: "miguelfervi",
-  url: "https://miguelfervi.vercel.app",
+  url: "https://miguelfervi.dev",
   linkedin: "https://www.linkedin.com/in/miguelfervi",
   linkedinHandle: "linkedin.com/in/miguelfervi",
   twitter: "",

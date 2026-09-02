@@ -22,9 +22,9 @@ describe("url", () => {
   });
 
   it("builds an absolute URL from site + base + path", () => {
-    expect(absoluteUrl("/og.svg", "https://miguelfervi.vercel.app")).toBe("https://miguelfervi.vercel.app/og.svg");
-    expect(absoluteUrl("/og.svg", "https://miguelfervi.vercel.app", "/personal-portfolio/")).toBe(
-      "https://miguelfervi.vercel.app/personal-portfolio/og.svg",
+    expect(absoluteUrl("/og.svg", "https://miguelfervi.dev")).toBe("https://miguelfervi.dev/og.svg");
+    expect(absoluteUrl("/og.svg", "https://miguelfervi.dev", "/personal-portfolio/")).toBe(
+      "https://miguelfervi.dev/personal-portfolio/og.svg",
     );
   });
 });
