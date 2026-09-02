@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site, skills } from "../data/site";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout title="About" description={site.about}>
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <p class="text-sm font-medium uppercase tracking-[0.2em] text-secondary">About</p>
+    <h1 class="mt-3 font-serif text-4xl text-white sm:text-5xl">{site.headline}</h1>
+    <p class="mt-6 text-lg leading-relaxed text-white/70">{site.about}</p>
+    <p class="mt-4 leading-relaxed text-white/60">{site.tagline}</p>
+
+    <h2 class="mt-12 text-sm font-medium uppercase tracking-[0.2em] text-secondary">Skills</h2>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        skills.map((skill) => (
+          <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/80">{skill}</li>
+        ))
+      }
+    </ul>
+  </section>
+  <Contact />
+</Layout>

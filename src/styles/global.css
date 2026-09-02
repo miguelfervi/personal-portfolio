@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2f57ef;
+  --color-secondary: #b966e7;
+  --color-brand: #5526f0;
+  --color-ink: #111113;
+  --color-ink-2: #192335;
+  --color-card: #27272e;
+  --color-muted: #6b7385;
+  --color-line: #525260;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-ink);
+  color: #f4f5f7;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand) 40%, transparent);
+}
+
+.site-bg {
+  background:
+    radial-gradient(1200px 500px at 12% -10%, color-mix(in srgb, var(--color-brand) 28%, transparent), transparent 60%),
+    radial-gradient(900px 420px at 90% 8%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 55%),
+    var(--color-ink);
+}
+
+.tone-violet {
+  background: linear-gradient(145deg, #5024d1, #2a146b);
+}
+
+.tone-blue {
+  background: linear-gradient(145deg, #2f57ef, #1a2d86);
+}
+
+.tone-ink {
+  background: linear-gradient(145deg, #3b3b46, #1b1b22);
+}
+
+.tone-gold {
+  background: linear-gradient(145deg, #8a6a1c, #3d2e0c);
+}
+
+.tone-pink {
+  background: linear-gradient(145deg, #db7093, #6b2744);
+}
+
+.tone-mint {
+  background: linear-gradient(145deg, #1ba2db, #123b5c);
+}

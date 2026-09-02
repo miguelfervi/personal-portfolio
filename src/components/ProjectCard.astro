@@ -1,0 +1,32 @@
+---
+import type { Project } from "../data/site";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={`/projects/${project.slug}`}
+  class="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition hover:-translate-y-1 hover:border-white/20"
+  transition:name={`card-${project.slug}`}
+>
+  <div class:list={["aspect-[16/9] p-5", `tone-${project.tone}`]}>
+    <span class="rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white/90">
+      {project.year}
+    </span>
+  </div>
+  <div class="space-y-3 p-5">
+    <h3 class="text-lg font-semibold text-white group-hover:text-secondary">{project.title}</h3>
+    <p class="text-sm leading-relaxed text-white/65">{project.excerpt}</p>
+    <ul class="flex flex-wrap gap-2">
+      {
+        project.tags.map((tag) => (
+          <li class="rounded-full bg-white/8 px-2.5 py-1 text-xs text-white/70">{tag}</li>
+        ))
+      }
+    </ul>
+  </div>
+</a>
