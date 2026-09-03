@@ -25,5 +25,11 @@ export default defineConfig({
     "/about": "/cv",
     "/sobre-mi": "/es/cv",
     "/proyectos": "/es/projects",
+    "/projects/docplanner-marketplace": "/projects/docplanner",
+    "/projects/clinic-saas": "/projects/docplanner",
+    "/projects/patient-mobile": "/projects/docplanner",
+    "/es/projects/docplanner-marketplace": "/es/projects/docplanner",
+    "/es/projects/clinic-saas": "/es/projects/docplanner",
+    "/es/projects/patient-mobile": "/es/projects/docplanner",
   },
 });

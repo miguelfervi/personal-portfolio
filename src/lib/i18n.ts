@@ -53,8 +53,8 @@ export const ui = {
   projectsKicker: { en: "Work", es: "Trabajo" },
   projectsTitle: { en: "Things I have shipped", es: "Cosas que he lanzado" },
   projectsIntro: {
-    en: "Personal work first, then company products. Each piece includes the stack and, when public, a demo.",
-    es: "Primero trabajo personal, luego producto de empresa. Cada pieza incluye el stack y, si es público, una demo.",
+    en: "Personal work first, then one card per company.",
+    es: "Primero trabajo personal, luego una tarjeta por empresa.",
   },
   companyProject: { en: "Company", es: "Empresa" },
   personalProject: { en: "Personal", es: "Personal" },

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="FinancialForce">
+  <rect width="1200" height="800" fill="#0b2a4a"/>
+  <text x="600" y="390" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="72" font-weight="700" fill="#5ec8f0">FinancialForce</text>
+  <text x="600" y="460" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="28" fill="#9bd7ef">Salesforce native ERP</text>
+</svg>

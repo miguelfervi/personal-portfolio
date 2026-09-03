@@ -24,4 +24,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# personal CV export (phone number)
+Miguel_Fernandez_Villegas_CV.html
+Miguel_Fernandez_Villegas_CV.pdf
+
 .cursor/

@@ -8,7 +8,7 @@ describe("isActivePath", () => {
   });
 
   it("treats nested project routes as active", () => {
-    expect(isActivePath("/projects/clinic-saas", "/projects")).toBe(true);
+    expect(isActivePath("/projects/docplanner", "/projects")).toBe(true);
     expect(isActivePath("/cv", "/projects")).toBe(false);
   });
 });

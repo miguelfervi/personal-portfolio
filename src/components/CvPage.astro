@@ -10,37 +10,58 @@ import T from "./T.astro";
 const experience = await listExperience();
 const education = await listEducation();
 const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
+
+const stripes = [
+  "before:bg-accent",
+  "before:bg-secondary",
+  "before:bg-coral",
+  "before:bg-sky",
+] as const;
+
+const dots = ["bg-accent", "bg-secondary", "bg-coral", "bg-sky"] as const;
 ---
 
 <Layout title={ui.cv[locale]} description={site.tagline}>
   <div class="page-narrow py-16 sm:py-24">
     <PageHeader kicker={ui.resume} title={site.name} intro={site.tagline} />
-    <p class="mt-4 inline-flex rounded-full bg-card px-3 py-1.5 text-sm text-muted-foreground shadow-sm">
-      <T t={site.role} /> · <T t={site.location} />
+    <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-border/70 bg-card px-3.5 py-1.5 text-sm shadow-sm">
+      <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+      <span class="text-foreground"><T t={site.role} /></span>
+      <span class="text-muted-foreground">·</span>
+      <span class="text-muted-foreground"><T t={site.location} /></span>
     </p>
 
-    <section class="mt-14">
-      <h2 class="mb-6 font-serif text-2xl font-medium">
+    <section class="mt-16">
+      <h2 class="mb-7 flex items-center gap-3 font-serif text-2xl font-medium">
+        <span class="h-2 w-2 rounded-full bg-accent"></span>
         <T t={ui.experience} />
       </h2>
-      <ol class="space-y-5">
+      <ol class="space-y-6">
         {
-          experience.map((job) => (
-            <li class="card p-5 sm:p-6">
-              <div class="grid gap-1 sm:flex sm:items-baseline sm:justify-between sm:gap-4">
-                <h3 class="font-serif text-xl font-medium">
-                  <T t={job.role} /> · <span class="text-secondary"><T t={job.company} /></span>
+          experience.map((job, index) => (
+            <li
+              class:list={[
+                "card relative overflow-hidden p-5 pl-7 sm:p-7 sm:pl-8",
+                "before:absolute before:inset-y-0 before:left-0 before:w-1.5 before:rounded-l-3xl",
+                stripes[index % stripes.length],
+              ]}
+            >
+              <div class="grid gap-2 sm:flex sm:items-start sm:justify-between sm:gap-4">
+                <h3 class="font-serif text-xl font-medium text-balance">
+                  <T t={job.role} />
+                  <span class="text-muted-foreground"> · </span>
+                  <span class="text-secondary"><T t={job.company} /></span>
                 </h3>
-                <p class="shrink-0 font-mono text-xs text-muted-foreground">
+                <p class="shrink-0 rounded-full bg-muted px-2.5 py-1 font-mono text-xs text-muted-foreground">
                   <T t={job.period} />
                 </p>
               </div>
-              <p class="mt-1 text-sm text-muted-foreground">
+              <p class="mt-1.5 text-sm text-muted-foreground">
                 <T t={job.location} />
               </p>
-              <ul class="mt-4 space-y-3">
+              <ul class="mt-5 list-disc space-y-2.5 pl-5 marker:text-accent">
                 {job.bullets.map((bullet) => (
-                  <li class="max-w-measure font-serif text-base leading-relaxed text-muted-foreground">
+                  <li class="max-w-measure pl-1 font-serif text-[1.02rem] leading-[1.7] text-foreground/85">
                     <T t={bullet} />
                   </li>
                 ))}
@@ -51,50 +72,56 @@ const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
       </ol>
     </section>
 
-    <section class="mt-14">
-      <h2 class="mb-6 font-serif text-2xl font-medium">
+    <section class="mt-16">
+      <h2 class="mb-7 flex items-center gap-3 font-serif text-2xl font-medium">
+        <span class="h-2 w-2 rounded-full bg-coral"></span>
         <T t={ui.education} />
       </h2>
-      <ul class="space-y-4">
+      <ul class="space-y-5">
         {
           education.map((item) => (
-            <li class="card p-5">
-              <div class="grid gap-1 sm:flex sm:items-baseline sm:justify-between sm:gap-4">
-                <h3 class="font-serif text-xl font-medium">
+            <li class="card relative overflow-hidden p-5 pl-7 sm:p-6 sm:pl-8 before:absolute before:inset-y-0 before:left-0 before:w-1.5 before:rounded-l-3xl before:bg-coral">
+              <div class="grid gap-2 sm:flex sm:items-start sm:justify-between sm:gap-4">
+                <h3 class="font-serif text-xl font-medium text-balance">
                   <T t={item.degree} />
                 </h3>
-                <p class="shrink-0 font-mono text-xs text-muted-foreground">
+                <p class="shrink-0 rounded-full bg-muted px-2.5 py-1 font-mono text-xs text-muted-foreground">
                   <T t={item.period} />
                 </p>
               </div>
-              <p class="mt-1 text-sm text-coral">
+              <p class="mt-1.5 text-sm text-coral">
                 <T t={item.school} />
               </p>
-              <p class="mt-2 max-w-measure text-base leading-relaxed text-muted-foreground">
-                <T t={item.detail} />
-              </p>
+              <ul class="mt-4 list-disc space-y-2 pl-5 marker:text-coral">
+                <li class="max-w-measure pl-1 font-serif text-[1.02rem] leading-[1.7] text-foreground/85">
+                  <T t={item.detail} />
+                </li>
+              </ul>
             </li>
           ))
         }
       </ul>
     </section>
 
-    <section class="mt-14">
-      <h2 class="mb-6 font-serif text-2xl font-medium">
+    <section class="mt-16">
+      <h2 class="mb-7 flex items-center gap-3 font-serif text-2xl font-medium">
+        <span class="h-2 w-2 rounded-full bg-secondary"></span>
         <T t={ui.technicalSkills} />
       </h2>
       <SkillsGrid />
     </section>
 
-    <section class="mt-14">
-      <h2 class="mb-6 font-serif text-2xl font-medium">
+    <section class="mt-16">
+      <h2 class="mb-7 flex items-center gap-3 font-serif text-2xl font-medium">
+        <span class="h-2 w-2 rounded-full bg-sky"></span>
         <T t={ui.spokenLanguages} />
       </h2>
       <ul class="grid gap-3 sm:grid-cols-2">
         {
-          spokenLanguages.map((lang) => (
+          spokenLanguages.map((lang, index) => (
             <li class="card flex items-baseline justify-between gap-4 px-5 py-4">
-              <p class="font-serif text-base">
+              <p class="flex items-center gap-2.5 font-serif text-base">
+                <span class:list={["h-1.5 w-1.5 rounded-full", dots[index % dots.length]]}></span>
                 <T t={lang.name} />
               </p>
               <p class="font-mono text-xs text-secondary">

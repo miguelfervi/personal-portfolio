@@ -20,6 +20,11 @@ export const site = {
   linkedinHandle: "linkedin.com/in/miguelfervi",
   twitter: "",
   twitterHandle: "",
+  portrait: "/miguel.jpg",
+  portraitAlt: {
+    en: "Portrait of Miguel Fernández Villegas",
+    es: "Retrato de Miguel Fernández Villegas",
+  } satisfies Text,
 };
 
 export const skills: { group: Text; items: string[] }[] = [
@@ -29,7 +34,7 @@ export const skills: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "Backend", es: "Backend" },
-    items: ["Node.js", "NestJS", "GraphQL"],
+    items: ["Node.js", "NestJS", "PHP", "GraphQL"],
   },
   {
     group: { en: "Delivery", es: "Entrega" },
