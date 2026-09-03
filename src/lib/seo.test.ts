@@ -3,7 +3,7 @@ import { descriptionOf, pageSeo, pageTitle, personJsonLd } from "./seo";
 
 describe("seo", () => {
   it("builds a document title from the page name", () => {
-    expect(pageTitle("CV", { name: "Miguel", role: "Engineer" })).toBe("CV — Miguel");
+    expect(pageTitle("Resume", { name: "Miguel", role: "Engineer" })).toBe("Resume — Miguel");
   });
 
   it("falls back to the localized role on the home page", () => {
@@ -26,7 +26,7 @@ describe("seo", () => {
 
   it("builds locale-aware canonical and hreflang URLs", () => {
     const seo = pageSeo({
-      title: "CV",
+      title: "Resume",
       locale: "es",
       pathname: "/es/cv",
       origin: "https://miguelfervi.dev",
@@ -34,7 +34,7 @@ describe("seo", () => {
       siteUrl: "https://miguelfervi.dev",
     });
 
-    expect(seo.documentTitle).toContain("CV");
+    expect(seo.documentTitle).toContain("Resume");
     expect(seo.canonical).toBe("https://miguelfervi.dev/es/cv");
     expect(seo.enUrl).toBe("https://miguelfervi.dev/cv");
     expect(seo.esUrl).toBe("https://miguelfervi.dev/es/cv");

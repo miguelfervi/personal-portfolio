@@ -6,8 +6,8 @@ excerpt:
   en: "This site: Astro, TypeScript, and an editorial reading layout."
   es: "Este sitio: Astro, TypeScript y un layout de lectura editorial."
 description:
-  en: Personal site in Astro and TypeScript. Content lives in Markdown collections so the CV and projects stay easy to update.
-  es: Sitio personal en Astro y TypeScript. El contenido vive en colecciones Markdown para que el CV y los proyectos se actualicen fácil.
+  en: Personal site in Astro and TypeScript. Content lives in Markdown collections so the resume and projects stay easy to update.
+  es: Sitio personal en Astro y TypeScript. El contenido vive en colecciones Markdown para que el resume y los proyectos se actualicen fácil.
 tags:
   - Astro
   - TypeScript
