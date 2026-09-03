@@ -59,6 +59,7 @@ export const ui = {
   companyProject: { en: "Company", es: "Empresa" },
   personalProject: { en: "Personal", es: "Personal" },
   demo: { en: "Demo", es: "Demo" },
+  repo: { en: "GitHub", es: "GitHub" },
   backToProjects: { en: "← Work", es: "← Trabajo" },
   resume: { en: "Resume", es: "Resume" },
   experience: { en: "Experience", es: "Experiencia" },

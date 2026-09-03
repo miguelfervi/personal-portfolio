@@ -58,6 +58,13 @@ const locale = requestLocale(Astro.currentLocale, Astro.url.pathname);
           </a>
         )
       }
+      {
+        project.repo && (
+          <a href={project.repo} target="_blank" rel="noreferrer" class="text-accent hover:opacity-80">
+            <T t={ui.repo} />
+          </a>
+        )
+      }
     </div>
   </article>
 </Layout>

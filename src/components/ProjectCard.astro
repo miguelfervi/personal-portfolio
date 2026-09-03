@@ -61,6 +61,13 @@ const image = project.image ? withBase(project.image) : undefined;
           </a>
         )
       }
+      {
+        project.repo && (
+          <a href={project.repo} target="_blank" rel="noreferrer" class="text-muted-foreground hover:text-foreground">
+            <T t={ui.repo} />
+          </a>
+        )
+      }
     </div>
   </div>
 </article>
