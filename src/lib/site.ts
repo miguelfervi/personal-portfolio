@@ -30,11 +30,11 @@ export const site = {
 export const skills: { group: Text; items: string[] }[] = [
   {
     group: { en: "Front-end", es: "Front-end" },
-    items: ["JavaScript", "TypeScript", "Vue", "React", "React Native", "Next.js", "Gatsby", "Astro"],
+    items: ["JavaScript", "TypeScript", "Vue", "React", "React Native", "Next.js", "Gatsby", "Astro", "Tailwind CSS"],
   },
   {
     group: { en: "Backend", es: "Backend" },
-    items: ["Node.js", "NestJS", "PHP", "GraphQL"],
+    items: ["Node.js", "NestJS", "PHP", "PostgreSQL", "GraphQL"],
   },
   {
     group: { en: "Delivery", es: "Entrega" },
