@@ -14,7 +14,7 @@ Merged from the two resumes. Public pages read the collection files, not this no
 
 ## Summary
 
-Senior Frontend Engineer and Product Engineer with 10 years shipping SaaS and marketplace products to production (Vue, React, React Native, Node, PHP). Focused on revenue-driving features, conversion-critical UI, and front-end architecture. At Docplanner: tech driver (project management and delivery), hands-on PHP and front-end, and part of the React + NestJS monorepo migration (did not lead it). Increasingly shipping AI-powered workflows: multi-agent systems, LLM integrations, RAG, MCP, and AI coding assistants.
+Senior Frontend Engineer and Product Engineer with 10 years shipping SaaS and marketplace products to production (Vue, React, React Native, Node, PHP). Focused on revenue-driving features, conversion-critical UI, and front-end architecture. At Docplanner: tech driver (project management and delivery), hands-on PHP and front-end, and part of the React + NestJS monorepo migration (did not lead it). Increasingly shipping AI-powered workflows: multi-agent systems, LLM integrations, RAG, and MCP.
 
 ## Experience
 

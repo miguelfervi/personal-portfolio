@@ -54,7 +54,7 @@ export const skills: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "AI", es: "IA" },
-    items: ["MCP", "RAG", "Multi-agent workflows", "Claude", "Codex", "Cursor"],
+    items: ["MCP", "RAG", "Multi-agent workflows"],
   },
 ];
 

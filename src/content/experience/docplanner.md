@@ -25,6 +25,6 @@ bullets:
     es: "Corrí A/B tests en onboarding, features de pago y upsells en varios mercados."
   - en: "Built Calendar Requests: 25% of modal opens click through to the page (1,222 / 4,915) and 18% of page visits become an MQL (849 / 4,845)."
     es: "Construí Calendar Requests: el 25% de las aperturas del modal llegan a la página (1.222 / 4.915) y el 18% de las visitas al form se convierten en MQL (849 / 4.845)."
-  - en: "Built internal AI workflows I introduced myself: MCP servers, RAG over internal docs, and coding-assistant practice (Claude, Codex, Cursor)."
-    es: "Monté flujos de IA que introduje yo: servidores MCP, RAG sobre docs internas y práctica con asistentes de código (Claude, Codex, Cursor)."
+  - en: "Built internal AI workflows I introduced myself: MCP servers, RAG over internal docs, and multi-agent setups."
+    es: "Monté flujos de IA que introduje yo: servidores MCP, RAG sobre docs internas y setups multi-agente."
 ---

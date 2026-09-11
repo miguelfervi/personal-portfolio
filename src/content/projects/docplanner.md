@@ -42,7 +42,7 @@ body:
 
     Microfrontends. Shipped those Monetization surfaces as independently releasable remotes, sharing design-system components and tooling.
 
-    AI workflows I introduced. Multi-agent setups, internal MCP servers and RAG over internal docs; coding assistants (Claude, Codex, Cursor) for reviews and repetitive front-end work.
+    AI workflows I introduced. Multi-agent setups, internal MCP servers, and RAG over internal docs.
   es: |
     Tech driver en Docplanner Monetization, en el marketplace de pacientes y el SaaS de clínicas: un motor product-led (self-serve, upgrade y upsell in-product) junto al movimiento sales-led. Features que construí, lanzadas como microfrontends. El trabajo seleccionado, abajo.
 
@@ -60,5 +60,5 @@ body:
 
     Microfrontends. Lancé esas superficies de Monetization como remotes con release independiente, compartiendo design system y tooling.
 
-    Flujos de IA que introduje yo. Setups multi-agente, servidores MCP internos y RAG sobre docs internas; asistentes de código (Claude, Codex, Cursor) para reviews y trabajo frontend repetitivo.
+    Flujos de IA que introduje yo. Setups multi-agente, servidores MCP internos y RAG sobre docs internas.
 ---
