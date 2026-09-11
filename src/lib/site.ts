@@ -9,8 +9,8 @@ export const site = {
   } satisfies Text,
   location: { en: "Granada, Spain", es: "Granada, España" } satisfies Text,
   tagline: {
-    en: "Ten years shipping SaaS and marketplace products. Front-end architecture, conversion-critical UI, and AI-assisted delivery.",
-    es: "Diez años lanzando productos SaaS y marketplaces. Arquitectura front-end, UI crítica para conversión y entrega asistida por IA.",
+    en: "Ten years shipping SaaS and marketplace products (Vue, React, React Native, Node, PHP). Tech driver on Docplanner Monetization — referral, onboarding, SSO, PLG — plus microfrontends and AI-assisted delivery.",
+    es: "Diez años lanzando productos SaaS y marketplaces (Vue, React, React Native, Node, PHP). Tech driver en Docplanner Monetization — referidos, onboarding, SSO, PLG — más microfrontends y entrega asistida por IA.",
   } satisfies Text,
   email: "miguelfervi@gmail.com",
   github: "https://github.com/miguelfervi",
@@ -30,19 +30,31 @@ export const site = {
 export const skills: { group: Text; items: string[] }[] = [
   {
     group: { en: "Front-end", es: "Front-end" },
-    items: ["JavaScript", "TypeScript", "Vue", "React", "React Native", "Next.js", "Gatsby", "Astro", "Tailwind CSS"],
+    items: ["JavaScript", "TypeScript", "Vue 2/3", "React", "Microfrontends", "React Native", "Next.js", "Gatsby", "Astro"],
   },
   {
     group: { en: "Backend", es: "Backend" },
-    items: ["Node.js", "NestJS", "PHP", "PostgreSQL", "GraphQL"],
+    items: ["Node.js", "NestJS", "PHP", "GraphQL", "REST", "Java / Spring"],
+  },
+  {
+    group: { en: "Growth & product", es: "Growth y producto" },
+    items: [
+      "PLG / self-serve",
+      "Conversion funnels",
+      "A/B testing",
+      "Onboarding & activation",
+      "Referral loops",
+      "OAuth / SSO",
+      "Analytics",
+    ],
   },
   {
     group: { en: "Delivery", es: "Entrega" },
-    items: ["Core Web Vitals", "Monorepos", "Testing"],
+    items: ["Monorepos", "Testing", "CI/CD", "Code review", "Scrum / Kanban"],
   },
   {
     group: { en: "AI", es: "IA" },
-    items: ["MCP", "RAG"],
+    items: ["MCP", "RAG", "Multi-agent workflows", "Claude", "Codex", "Cursor"],
   },
 ];
 
