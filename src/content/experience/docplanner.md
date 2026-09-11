@@ -13,8 +13,8 @@ location:
   en: Barcelona · Remote
   es: Barcelona · Remoto
 bullets:
-  - en: "On Monetization: shipped referral, self-serve onboarding, SSO registration, address monetization, and in-product upsells and checkout — from discovery through release, experimentation and monitoring."
-    es: "En Monetization: lancé referidos, onboarding self-serve, registro SSO, monetización de direcciones, y upsells y checkout in-product — de discovery a release, experimentación y monitorización."
+  - en: "On Monetization, across the patient marketplace and clinic SaaS: shipped referral, self-serve onboarding, SSO registration, address monetization, and in-product upsells and checkout — from discovery through release, experimentation and monitoring."
+    es: "En Monetization, en el marketplace de pacientes y el SaaS de clínicas: lancé referidos, onboarding self-serve, registro SSO, monetización de direcciones, y upsells y checkout in-product — de discovery a release, experimentación y monitorización."
   - en: "Building the product-led growth motion next to a sales-led company: self-serve completion, in-product intent, and hybrid flows where a user can pay or raise a hand without adding a rep. Since 2026 that includes expansion (upgrade and upsell), not only first acquisition."
     es: "Construyendo el motor de product-led growth junto al crecimiento sales-led: self-serve hasta completar, intención in-product y flujos híbridos donde el usuario paga o levanta la mano sin sumar un comercial. Desde 2026 eso incluye expansión (upgrade y upsell), no solo la primera adquisición."
   - en: "Acted as tech driver on Monetization: project management, delivery and technical direction; primary front-end liaison for product and design."

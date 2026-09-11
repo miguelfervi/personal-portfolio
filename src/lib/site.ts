@@ -9,8 +9,8 @@ export const site = {
   } satisfies Text,
   location: { en: "Granada, Spain", es: "Granada, España" } satisfies Text,
   tagline: {
-    en: "Ten years shipping SaaS and marketplace products (Vue, React, React Native, Node, PHP). Tech driver on Docplanner Monetization — referral, onboarding, SSO, PLG — plus microfrontends and AI-assisted delivery.",
-    es: "Diez años lanzando productos SaaS y marketplaces (Vue, React, React Native, Node, PHP). Tech driver en Docplanner Monetization — referidos, onboarding, SSO, PLG — más microfrontends y entrega asistida por IA.",
+    en: "Ten years shipping SaaS and marketplace products (Vue, React, React Native, Node, PHP). Tech driver on Docplanner Monetization — patient marketplace and clinic SaaS: referral, onboarding, SSO, PLG — plus microfrontends and AI-assisted delivery.",
+    es: "Diez años lanzando productos SaaS y marketplaces (Vue, React, React Native, Node, PHP). Tech driver en Docplanner Monetization — marketplace de pacientes y SaaS de clínicas: referidos, onboarding, SSO, PLG — más microfrontends y entrega asistida por IA.",
   } satisfies Text,
   email: "miguelfervi@gmail.com",
   github: "https://github.com/miguelfervi",

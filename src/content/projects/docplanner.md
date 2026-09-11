@@ -3,11 +3,11 @@ title:
   en: Docplanner
   es: Docplanner
 excerpt:
-  en: "Monetization at Docplanner: referral, onboarding, SSO, address paywalls, and in-product upsell — shipped as microfrontends."
-  es: "Monetization en Docplanner: referidos, onboarding, SSO, paywalls de direcciones y upsell in-product — lanzados como microfrontends."
+  en: "Monetization on Docplanner’s patient marketplace and clinic SaaS: referral, onboarding, SSO, address paywalls, and in-product upsell — shipped as microfrontends."
+  es: "Monetization en el marketplace de pacientes y el SaaS de clínicas de Docplanner: referidos, onboarding, SSO, paywalls de direcciones y upsell in-product — lanzados como microfrontends."
 description:
-  en: "Company work on Docplanner Monetization. Selected projects I built: referral program, self-serve onboarding, SSO, address monetization, paid surfaces, and microfrontends."
-  es: "Trabajo en Docplanner Monetization. Proyectos que construí: programa de referidos, onboarding self-serve, SSO, monetización de direcciones, superficies de pago y microfrontends."
+  en: "Company work on Docplanner Monetization, on the patient marketplace and clinic SaaS. Selected projects I built: referral program, self-serve onboarding, SSO, address monetization, paid surfaces, and microfrontends."
+  es: "Trabajo en Docplanner Monetization, en el marketplace de pacientes y el SaaS de clínicas. Proyectos que construí: programa de referidos, onboarding self-serve, SSO, monetización de direcciones, superficies de pago y microfrontends."
 tags:
   - Vue
   - TypeScript
@@ -26,7 +26,7 @@ featured: true
 order: 10
 body:
   en: |
-    Tech driver on Docplanner Monetization: a product-led engine (self-serve, in-product upgrade and upsell) next to the existing sales motion. Features I built, shipped as microfrontends. Selected work below.
+    Tech driver on Docplanner Monetization, on the patient marketplace and clinic SaaS: a product-led engine (self-serve, in-product upgrade and upsell) next to the existing sales motion. Features I built, shipped as microfrontends. Selected work below.
 
     Referral program and landing page. Built the doctor-to-doctor referral experience end to end: public landing, personalised share links, invite tracking and reward states. Defined attribution events with data and growth, localised the page for several markets, and ran copy and CTA experiments.
 
@@ -42,7 +42,7 @@ body:
 
     AI workflows I introduced. Multi-agent setups, internal MCP servers and RAG over internal docs; coding assistants (Claude, Codex, Cursor) for reviews and repetitive front-end work.
   es: |
-    Tech driver en Docplanner Monetization: un motor product-led (self-serve, upgrade y upsell in-product) junto al movimiento sales-led. Features que construí, lanzadas como microfrontends. El trabajo seleccionado, abajo.
+    Tech driver en Docplanner Monetization, en el marketplace de pacientes y el SaaS de clínicas: un motor product-led (self-serve, upgrade y upsell in-product) junto al movimiento sales-led. Features que construí, lanzadas como microfrontends. El trabajo seleccionado, abajo.
 
     Programa de referidos y landing. Construí la experiencia doctor-a-doctor de punta a punta: landing pública, enlaces de share personalizados, tracking de invitaciones y estados de recompensa. Definí los eventos de atribución con data y growth, localicé la página en varios mercados y corrí experimentos de copy y CTA.
 
